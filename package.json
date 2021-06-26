@@ -16,7 +16,8 @@
   "private": false,
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve",
-    "build": "cross-env NODE_ENV=production webpack"
+    "build": "cross-env NODE_ENV=production webpack",
+    "start:prod": "cross-env NODE_ENV=production webpack && serve dist"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
@@ -50,6 +51,7 @@
     "prettier": "^2.3.1",
     "react-refresh": "^0.10.0",
     "sass-loader": "^12.1.0",
+    "serve": "^12.0.0",
     "style-loader": "^2.0.0",
     "svg-sprite-loader": "^6.0.7",
     "svgo": "^2.3.1",
