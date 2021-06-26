@@ -12,6 +12,4 @@ const config = {
   ].filter(Boolean),
 };
 
-console.log(config);
-
 module.exports = config;
