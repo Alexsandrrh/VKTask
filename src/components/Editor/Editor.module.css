@@ -16,7 +16,7 @@
   line-height: 18px;
   width: calc(100% - 36px);
   min-height: 36px;
-  max-height: 200px;
+  max-height: 150px;
   overflow-y: scroll;
   padding: 9px;
   outline: none;
@@ -27,12 +27,22 @@
   color: #939393;
 }
 
+.EditorInput::-webkit-scrollbar {
+  width: 6px;
+  height: 100%;
+  margin-right: 4px;
+}
+
+.EditorInput::-webkit-scrollbar-thumb {
+  background: #dae2ea;
+  border-radius: 3px;
+}
+
 .EditorInput * {
   cursor: text;
 }
 
 .EditorInput a {
-  cursor: pointer;
   color: #2a5885;
 }
 
