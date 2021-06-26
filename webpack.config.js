@@ -105,7 +105,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       filename: "index.html",
-      template: path.resolve("src/index.ejs"),
+      template: path.resolve("src/index.html"),
       inject: "body",
       minify: IS_PROD && {
         html5: true,

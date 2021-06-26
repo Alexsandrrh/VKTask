@@ -3,7 +3,6 @@ import React, {
   useState,
   RefObject,
   ChangeEvent,
-  useEffect,
 } from "react";
 import styles from "./Editor.module.css";
 import IconSmile from "../../assets/icons/icon-smile.svg";
@@ -23,7 +22,8 @@ const Editor = () => {
   const view: RefObject<HTMLDivElement> = useRef(null);
   const buttonEmoji: RefObject<HTMLDivElement> = useRef(null);
   let timer: any = null;
-  const pretty = (value: string) => {
+
+  const prettyText = (value: string) => {
     const PATTERNS = {
       URL: /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi,
       HASHTAG: /#(\w+)/g,
@@ -43,23 +43,20 @@ const Editor = () => {
   };
 
   const handleChange = (e: ChangeEvent<HTMLDivElement>) => {
-    let value = e.target.innerHTML;
-    pretty(value);
+    prettyText(e.target.innerHTML);
   };
 
   const handleSelect = (payload: { type: string; value: string }) => {
     if (input.current) {
       if (payload.type === "emoji") {
         input.current.innerHTML += `<img data-type="emoji" alt="Эмодзи" src="${payload.value}">`;
-        pretty(input.current.innerHTML);
+        prettyText(input.current.innerHTML);
       }
     }
   };
 
   // Открытие и закрытие окна emoji
-  const handleClick = () => {
-    setToggleEmoji(!isOpenEmoji);
-  };
+  const handleClick = () => setToggleEmoji(!isOpenEmoji);
 
   return (
     <div className={styles.Editor}>
