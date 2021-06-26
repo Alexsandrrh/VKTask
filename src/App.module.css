@@ -1,7 +1,14 @@
 .App {
   display: flex;
+  flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding-top: 150px;
+}
+
+.AppTitle {
+  font-size: 52px;
+  font-weight: 700;
+  opacity: .9;
+  margin-bottom: 80px;
 }

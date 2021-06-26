@@ -14,7 +14,7 @@
   font-weight: normal;
   font-size: 13px;
   line-height: 18px;
-  width: 100%;
+  width: calc(100% - 36px);
   min-height: 36px;
   max-height: 200px;
   overflow-y: scroll;
@@ -31,7 +31,12 @@
   cursor: text;
 }
 
-.EditorInput *[data-type="emoji"] {
+.EditorInput a {
+  cursor: pointer;
+  color: #2a5885;
+}
+
+.EditorInput img[data-type="emoji"] {
   width: 16px;
   height: 16px;
   overflow: hidden;
@@ -40,15 +45,14 @@
 }
 
 .EditorButtonEmoji {
-  position: absolute;
-  top: 0;
-  right: 0;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 36px;
   height: 36px;
   padding: 6px;
+  background: #ffffff;
   cursor: pointer;
 }
 
