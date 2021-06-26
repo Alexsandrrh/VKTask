@@ -1,6 +1,6 @@
 const IS_DEV = process.env.NODE_ENV === "development";
 
-module.exports = {
+const config = {
   presets: [
     "@babel/preset-env",
     "@babel/preset-react",
@@ -11,3 +11,7 @@ module.exports = {
     IS_DEV && "react-refresh/babel",
   ].filter(Boolean),
 };
+
+console.log(config);
+
+module.exports = config;

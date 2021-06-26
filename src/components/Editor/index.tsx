@@ -1,21 +1,15 @@
-import React, {
-  useRef,
-  useState,
-  RefObject,
-  ChangeEvent,
-  MouseEvent,
-  useEffect,
-} from "react";
+import React, { useRef, useState, RefObject, ChangeEvent } from "react";
 import styles from "./Editor.module.css";
 import IconSmile from "../../assets/icons/icon-smile.svg";
 import Icon from "../Commons/Icon";
 import EmojiView from "../EmojiView";
-import emoji from "../../emoji.json";
+
+// Настройки для редактора
+const OPTIONS = {
+  TIME_OUT: 300,
+};
 
 const Editor = () => {
-  const OPTIONS = {
-    TIME_OUT: 300,
-  };
   const [isOpenEmoji, setToggleEmoji] = useState(false);
   const input: RefObject<HTMLDivElement> = useRef(null);
   const view: RefObject<HTMLDivElement> = useRef(null);
@@ -25,7 +19,9 @@ const Editor = () => {
   let timeoutOutView: any = null;
 
   // Handlers
-  const handleChange = (e: ChangeEvent<HTMLDivElement>) => {};
+  const handleChange = (e: ChangeEvent<HTMLDivElement>) => {
+    console.log(e.target.innerHTML);
+  };
   const handleSelect = (payload: { type: string; value: string }) => {
     if (input.current) {
       if (payload.type === "emoji") {

@@ -4,7 +4,6 @@ import Icon from "../Commons/Icon";
 import IconSmile from "../../assets/icons/icon-smile.svg";
 import IconClock from "../../assets/icons/icon-clock.svg";
 import EmojiSection from "../EmojiSection";
-import emoji from "../../emoji.json";
 import Emoji from "../Emoji";
 
 interface TabProps {
@@ -23,6 +22,17 @@ const EmojiViewTab = ({ icon, isActive, onClick }: TabProps) => (
   </button>
 );
 
+interface IEmoji {
+  shortName: string;
+  className: string;
+  image: string;
+}
+
+interface IEmojiSection {
+  title: string;
+  items: IEmoji[];
+}
+
 interface ViewProps {
   isOpen: boolean;
   refView: any;
@@ -32,6 +42,7 @@ interface ViewProps {
 interface ViewState {
   currentTab: string;
   oftenUsed: any[];
+  emoji: IEmojiSection[];
 }
 
 class EmojiView extends Component<ViewProps, ViewState> {
@@ -39,6 +50,7 @@ class EmojiView extends Component<ViewProps, ViewState> {
     super(props);
 
     this.state = {
+      emoji: [],
       currentTab: "emoji",
       oftenUsed: JSON.parse(localStorage.getItem("oftenUsed") ?? "[]"),
     };
@@ -47,12 +59,28 @@ class EmojiView extends Component<ViewProps, ViewState> {
     this.handleTabClick = this.handleTabClick.bind(this);
   }
 
+  componentDidMount() {
+    import(/* webpackChunkName: "emoji-data" */ "../../emoji.json").then(
+      ({ default: data }) => {
+        this.setState({ ...this.state, emoji: data });
+      }
+    );
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps: Readonly<ViewProps>) {
+    if (!nextProps.isOpen && this.state.currentTab !== "emoji") {
+      setTimeout(
+        () => this.setState({ ...this.state, currentTab: "emoji" }),
+        100
+      );
+    }
+  }
+
   handleEmojiClick = (emoji: any) => {
     const { onSelect } = this.props;
     const { oftenUsed } = this.state;
     return () => {
       let payload;
-      // Находим объект
       const used = oftenUsed.find((item) => item.shortName === emoji.shortName);
 
       if (used) {
@@ -86,7 +114,7 @@ class EmojiView extends Component<ViewProps, ViewState> {
 
   render() {
     const { isOpen, refView } = this.props;
-    const { oftenUsed } = this.state;
+    const { oftenUsed, emoji } = this.state;
     const tabsViews = [
       {
         view: emoji.map(({ title, items }, key) => (
@@ -94,7 +122,7 @@ class EmojiView extends Component<ViewProps, ViewState> {
             {items.map((emoji, index) => (
               <Emoji
                 onClick={this.handleEmojiClick(emoji)}
-                key={index}
+                key={emoji.shortName}
                 className={emoji.className}
               />
             ))}
@@ -134,6 +162,7 @@ class EmojiView extends Component<ViewProps, ViewState> {
         <div className={styles.EmojiViewTabs}>
           {tabsViews.map((item) => (
             <EmojiViewTab
+              key={item.name}
               isActive={item.name === this.state.currentTab}
               onClick={this.handleTabClick(item.name)}
               icon={item.icon}
