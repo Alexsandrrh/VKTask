@@ -92,9 +92,10 @@ const Editor = () => {
     const timeOut = () =>
       setTimeout(() => {
         setToggleEmoji(false);
+        window.removeEventListener("click", onClick);
         view.current?.removeEventListener("mouseenter", onEnter);
         view.current?.removeEventListener("mouseleave", onLeave);
-      }, 500);
+      }, 700);
     let timer: any = timeOut();
 
     const onEnter = () => {
@@ -108,7 +109,16 @@ const Editor = () => {
         timer = timeOut();
       }
     };
+    const onClick = (e) => {
+      if (
+        !view.current?.contains(e.target) &&
+        !buttonEmoji.current?.contains(e.target)
+      ) {
+        setToggleEmoji(false);
+      }
+    };
 
+    window.addEventListener("click", onClick);
     view.current?.addEventListener("mouseenter", onEnter);
     view.current?.addEventListener("mouseleave", onLeave);
   };
