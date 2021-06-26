@@ -26,6 +26,6 @@
   width: 16px;
   height: 16px;
   overflow: hidden;
-  background-image: url("../../assets/images/emoji-sprite.png");
+  background-image: url("../../assets/images/emoji/emoji-sprite@1x.png");
   background-size: 1020px 1020px;
 }
