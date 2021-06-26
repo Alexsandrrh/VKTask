@@ -87,7 +87,31 @@ const Editor = () => {
   };
 
   // Открытие и закрытие окна emoji
-  const handleClick = () => setToggleEmoji(!isOpenEmoji);
+  const handleClick = () => {
+    setToggleEmoji(!isOpenEmoji);
+    const timeOut = () =>
+      setTimeout(() => {
+        setToggleEmoji(false);
+        view.current?.removeEventListener("mouseenter", onEnter);
+        view.current?.removeEventListener("mouseleave", onLeave);
+      }, 500);
+    let timer: any = timeOut();
+
+    const onEnter = () => {
+      if (timer) {
+        clearTimeout(timer);
+        timer = null;
+      }
+    };
+    const onLeave = () => {
+      if (!timer) {
+        timer = timeOut();
+      }
+    };
+
+    view.current?.addEventListener("mouseenter", onEnter);
+    view.current?.addEventListener("mouseleave", onLeave);
+  };
 
   // Keydown Event
   const keydownEvent = (e: KeyboardEvent) => {
