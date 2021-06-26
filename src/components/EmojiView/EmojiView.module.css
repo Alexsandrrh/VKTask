@@ -1,7 +1,7 @@
 .EmojiView {
   position: absolute;
   right: 0;
-  bottom: 43px;
+  top: -296px;
   display: flex;
   flex-flow: column nowrap;
   width: 290px;
