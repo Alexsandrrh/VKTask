@@ -3,7 +3,6 @@
   display: flex;
   flex-flow: row nowrap;
   align-items: flex-start;
-  overflow: hidden;
   width: 290px;
   background: #ffffff;
   border: 1px solid #c5d0db;
@@ -53,7 +52,6 @@
   width: 36px;
   height: 36px;
   padding: 6px;
-  background: #ffffff;
   cursor: pointer;
 }
 
