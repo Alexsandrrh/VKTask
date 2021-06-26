@@ -182,8 +182,8 @@ class EmojiView extends Component<ViewProps, ViewState> {
         >
           <g filter="url(#filter0_d)">
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M11 8C8.19927 8 6.19955 3 3 3H11H19C15.7982 3 13.8007 8 11 8Z"
               fill="#EBEEF2"
             />
@@ -194,14 +194,8 @@ class EmojiView extends Component<ViewProps, ViewState> {
           </g>
           <rect x="2" y="1" width="18" height="2" fill="#EBEEF2" />
           <defs>
-            <filter
-              id="filter0_d"
-              x="0"
-              y="0"
-              width="22"
-              height="13"
-            >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <filter id="filter0_d" x="0" y="0" width="22" height="13">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feColorMatrix
                 in="SourceAlpha"
                 type="matrix"
