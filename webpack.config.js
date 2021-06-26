@@ -23,7 +23,7 @@ const styleLoader = IS_DEV
 
 module.exports = {
   mode: process.env.NODE_ENV,
-  entry: path.resolve("src/index.tsx"),
+  entry: { bundle: path.resolve("src/index.tsx") },
   output: {
     filename: "./assets/scripts/[name]-[fullhash:10].js",
     path: path.resolve("dist"),
@@ -91,7 +91,7 @@ module.exports = {
         test: /\.(gif|png|jpg|jpeg)$/,
         exclude: /node_modules/,
         include: path.resolve(__dirname, "./src/assets/images"),
-        use: "url-loader?limit=10000&name=./assets/images/[name]-[fullhash:10].[ext]",
+        use: "url-loader?limit=10000&name=./assets/images/[name]-[hash:10].[ext]",
       },
       { test: /\.(woff|woff2|eot|ttf|otf)$/, use: ["file-loader"] },
     ],
@@ -126,8 +126,8 @@ module.exports = {
     IS_DEV && new webpack.HotModuleReplacementPlugin(),
     IS_DEV && new ReactRefreshPlugin(),
     new MiniCssExtractPlugin({
-      filename: "./assets/css/main-[hash].css",
-      chunkFilename: "[id]-[hash].css",
+      filename: "./assets/css/main-[hash:10].css",
+      chunkFilename: "[name]-[hash].css",
     }),
 
     IS_PROD &&
@@ -147,6 +147,14 @@ module.exports = {
     minimize: IS_PROD,
     splitChunks: {
       chunks: "all",
+      cacheGroups: {
+        vendor: {
+          test: /node_modules/,
+          chunks: "initial",
+          name: "vendor",
+          enforce: true,
+        },
+      },
     },
     minimizer: IS_PROD
       ? [
