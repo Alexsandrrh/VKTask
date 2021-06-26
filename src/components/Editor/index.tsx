@@ -25,7 +25,7 @@ const Editor = () => {
   const handleSelect = (payload: { type: string; value: string }) => {
     if (input.current) {
       if (payload.type === "emoji") {
-        input.current.innerHTML += `<img data-type="emoji" src="${payload.value}" />`;
+        input.current.innerHTML += `<img data-type="emoji" alt="Эмодзи" src="${payload.value}" />`;
       }
     }
   };
