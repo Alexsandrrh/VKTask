@@ -1,0 +1,88 @@
+.EmojiView {
+  position: absolute;
+  right: 0;
+  bottom: 43px;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 290px;
+  height: 286px;
+  background: #ffffff;
+  overflow: hidden;
+  border: 1px solid #c5d0db;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  opacity: 0;
+  transition: 0.2s;
+  z-index: -1;
+}
+
+.EmojiViewActive {
+  composes: EmojiView;
+  opacity: 1;
+  z-index: 10;
+}
+
+.EmojiViewСorner {
+  position: absolute;
+  right: 10px;
+  bottom: -6px;
+  fill: #ebeef2;
+}
+
+.EmojiViewBody,
+.EmojiViewTabs {
+  width: 100%;
+}
+
+.EmojiViewBody {
+  display: flex;
+  flex-flow: column nowrap;
+  height: calc(100% - 36px);
+  overflow-y: scroll;
+  padding: 0 10px 0 5px;
+}
+
+.EmojiViewBody::-webkit-scrollbar {
+  width: 6px;
+  height: 100%;
+  margin-right: 4px;
+}
+
+.EmojiViewBody::-webkit-scrollbar-thumb {
+  background: #dae2ea;
+  border-radius: 3px;
+}
+
+.EmojiViewTabs {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  height: 36px;
+  background: #ebeef2;
+}
+
+.EmojiViewTab {
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.EmojiViewTab:hover {
+  background: #dce1e6;
+}
+
+.EmojiViewTabActive {
+  composes: EmojiViewTab;
+  cursor: default;
+}
+
+.EmojiViewTabActive,
+.EmojiViewTabActive:hover {
+  background: #ffffff;
+}
+
+.EmojiViewTabIcon {
+  fill: #99a2ad;
+}

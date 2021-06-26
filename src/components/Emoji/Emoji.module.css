@@ -1,0 +1,31 @@
+.Emoji {
+  width: 26px;
+  height: 26px;
+  user-select: none;
+}
+
+.Emoji,
+.EmojiShadow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.EmojiShadow {
+  width: 22px;
+  height: 22px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.EmojiShadow:hover {
+  background: #f0f2f5;
+}
+
+.EmojiIcon {
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+  background-image: url("../../assets/images/emoji-sprite.png");
+  background-size: 1020px 1020px;
+}

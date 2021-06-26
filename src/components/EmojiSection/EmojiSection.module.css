@@ -1,0 +1,27 @@
+.EmojiSection {
+  margin-bottom: 10px;
+}
+
+.EmojiSection:last-child {
+  margin-bottom: 0;
+}
+
+.EmojiSectionTitle {
+  position: relative;
+  display: block;
+  text-align: left;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 15px;
+  color: #939393;
+  padding: 10px 5px 0;
+  margin-bottom: 5px;
+  transform: translateY(0);
+  user-select: none;
+}
+
+.EmojiSectionBody {
+  display: flex;
+  flex-flow: row wrap;
+}

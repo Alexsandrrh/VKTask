@@ -1,0 +1,55 @@
+.Editor {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-end;
+  width: 290px;
+  background: #ffffff;
+  border: 1px solid #c5d0db;
+  border-radius: 4px;
+}
+
+.EditorInput {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 18px;
+  width: calc(100% - 36px);
+  min-height: 36px;
+  max-height: 200px;
+  overflow-y: scroll;
+  padding: 9px;
+  outline: none;
+}
+
+.EditorInput:empty:after {
+  content: attr(data-placeholder);
+  color: #939393;
+}
+
+.EditorInput img[data-type="emoji"] {
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+  vertical-align: -3px;
+  margin: 0 1.5px;
+}
+
+.EditorButtonEmoji {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.EditorButtonEmoji:hover .EditorButtonIcon {
+  fill: #99a2ad;
+}
+
+.EditorButtonIcon {
+  fill: #c5d0db;
+}
