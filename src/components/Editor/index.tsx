@@ -4,6 +4,7 @@ import React, {
   RefObject,
   ChangeEvent,
   useEffect,
+  MouseEvent,
 } from "react";
 import styles from "./Editor.module.css";
 import IconSmile from "../../assets/icons/icon-smile.svg";
@@ -109,7 +110,7 @@ const Editor = () => {
         timer = timeOut();
       }
     };
-    const onClick = (e) => {
+    const onClick = (e: any) => {
       if (
         !view.current?.contains(e.target) &&
         !buttonEmoji.current?.contains(e.target)

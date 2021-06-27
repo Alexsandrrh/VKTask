@@ -82,11 +82,10 @@ class EmojiView extends Component<ViewProps, ViewState> {
     return () => {
       let payload;
       const used = oftenUsed.find((item) => item.shortName === emoji.shortName);
-
       if (used) {
         payload = oftenUsed
           .filter((item) => item.shortName !== emoji.shortName)
-          .concat([{ ...used, countUsed: used.countUsed + 1 }]);
+          .concat([{ ...emoji, countUsed: used.countUsed + 1 }]);
       } else {
         payload = [...oftenUsed, { ...emoji, countUsed: 1 }];
       }
@@ -135,7 +134,7 @@ class EmojiView extends Component<ViewProps, ViewState> {
         view: (
           <EmojiSection title="Часто используемые">
             {oftenUsed
-              .slice(0, oftenUsed.length > 25 ? 25 : oftenUsed.length - 1)
+              .slice(0, oftenUsed.length > 25 ? 25 : oftenUsed.length)
               .map((emoji, index) => (
                 <Emoji
                   onClick={this.handleEmojiClick(emoji)}
